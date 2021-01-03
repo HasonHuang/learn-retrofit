@@ -1,0 +1,8 @@
+server:
+  port: 8080
+logging:
+  level:
+    com.ihason.learn.learnretrofit: debug
+
+retrofit:
+  global-converter-factories:
