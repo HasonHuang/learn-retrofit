@@ -62,4 +62,16 @@ public class ResourceForEnhanceTests {
         anAssert.isExactlyInstanceOf(com.github.lianjiatech.retrofit.spring.boot.exception.RetrofitException.class);
     }
 
+    @Test
+    public void should_create_success() throws IOException {
+        ResourceDTO input = new ResourceDTO(100L, "Tom");
+        Call<ApiResponse<ResourceDTO>> call = api.createCall(input);
+        ApiResponse<ResourceDTO> response = call.execute().body();
+        assertThat(response).isNotNull();
+        assertThat(response)
+                .extracting(ApiResponse::getData)
+                .extracting(ResourceDTO::getName)
+                .isEqualTo(input.getName());
+    }
+
 }

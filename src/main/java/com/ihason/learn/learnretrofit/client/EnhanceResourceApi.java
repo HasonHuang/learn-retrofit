@@ -9,9 +9,10 @@ import com.ihason.learn.learnretrofit.server.ApiListResponse;
 import com.ihason.learn.learnretrofit.server.ApiResponse;
 import com.ihason.learn.learnretrofit.server.ResourceDTO;
 import okhttp3.OkHttpClient;
-import org.slf4j.event.Level;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 import java.time.Duration;
@@ -58,5 +59,13 @@ public interface EnhanceResourceApi {
      */
     @GET(value = "resources/{id}")
     Call<ApiResponse<ResourceDTO>> get(@Path("id") Long id);
+
+    /**
+     * 保存资源
+     *
+     * @param dto 资源
+     */
+    @POST(value = "resources")
+    Call<ApiResponse<ResourceDTO>> createCall(@Body ResourceDTO dto);
 
 }

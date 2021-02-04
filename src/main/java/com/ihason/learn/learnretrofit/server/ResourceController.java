@@ -34,7 +34,8 @@ public class ResourceController {
     }
 
     @PostMapping("/resources")
-    public void save(@RequestBody ResourceDTO dto) {
+    public ApiResponse<ResourceDTO> save(@RequestBody ResourceDTO dto) {
+        log.debug("body: {}", dto);
         printHeaders();
 
         Long id = dto.getId();
@@ -46,6 +47,7 @@ public class ResourceController {
 
         dto.setId(id);
         ResourceRepository.DB.put(id, dto);
+        return ApiResponse.of(dto);
     }
 
     private void printHeaders() {

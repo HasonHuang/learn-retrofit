@@ -3,6 +3,3 @@ server:
 logging:
   level:
     com.ihason.learn.learnretrofit: debug
-
-retrofit:
-  global-converter-factories:
